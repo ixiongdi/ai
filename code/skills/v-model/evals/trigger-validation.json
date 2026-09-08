@@ -1,0 +1,34 @@
+[
+  {
+    "query": "We're adding SSO; walk the change through definition phases and matching test levels before merge.",
+    "should_trigger": true
+  },
+  {
+    "query": "Need a mini-V for this sprint increment: reqs, design stubs, then unit→integration→system→UAT.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you set up requirement IDs and an RTM before we touch the auth refactor code?",
+    "should_trigger": true
+  },
+  {
+    "query": "Ship the feature with proper acceptance testing and don't treat a local smoke run as UAT.",
+    "should_trigger": true
+  },
+  {
+    "query": "What is the waterfall model historically, without applying any process to our repo?",
+    "should_trigger": false
+  },
+  {
+    "query": "how do i write a jest unit test for this pure function—no project process, just the test",
+    "should_trigger": false
+  },
+  {
+    "query": "Draft a standup update for yesterday's tickets in Slack tone.",
+    "should_trigger": false
+  },
+  {
+    "query": "Convert this JSON config to YAML and save beside it.",
+    "should_trigger": false
+  }
+]

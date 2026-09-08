@@ -1,0 +1,50 @@
+[
+  {
+    "query": "Follow the V-model for this feature: requirements, design, then layered tests.",
+    "should_trigger": true
+  },
+  {
+    "query": "Before coding, I need acceptance criteria, a traceability matrix, and UAT cases for the checkout redesign.",
+    "should_trigger": true
+  },
+  {
+    "query": "Please run unit, integration, system, and UAT as separate gates for the payments change—don't squash them.",
+    "should_trigger": true
+  },
+  {
+    "query": "This is a regulated change; we need verification against specs and validation against user needs, with early test planning.",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我按需求驱动做这个功能：先写验收标准，再分层测试（单元/集成/系统/验收）。",
+    "should_trigger": true
+  },
+  {
+    "query": "my manager wants SDLC gates and requirements traceability for the audit export—can you drive that process?",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the typo in README line 12.",
+    "should_trigger": false
+  },
+  {
+    "query": "What's the weather in Shanghai today?",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain the difference between Scrum ceremonies in one paragraph.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a fibonacci function in Python.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rename the variable `foo` to `userId` in auth.ts only.",
+    "should_trigger": false
+  },
+  {
+    "query": "Update the formulas in my Excel budget spreadsheet under ~/Documents/budget.xlsx.",
+    "should_trigger": false
+  }
+]

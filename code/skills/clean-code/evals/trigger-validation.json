@@ -1,0 +1,34 @@
+[
+  {
+    "query": "给我做一次 clean-code + V-model 全仓评审，阶段别乱序，最后 CreatePlan。",
+    "should_trigger": true
+  },
+  {
+    "query": "Review acceptance gaps and unit-test cleanliness across the project; I want a fix plan not a markdown report in-tree.",
+    "should_trigger": true
+  },
+  {
+    "query": "架构边界很烂、集成测试几乎没有，按维基 V 模型左到右评完出整改 plan。",
+    "should_trigger": true
+  },
+  {
+    "query": "Smell check: long functions, duplication, swallowed errors—whole codebase, plan the cleanups.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain the waterfall model historically without touching our repository.",
+    "should_trigger": false
+  },
+  {
+    "query": "Draft a Slack standup for yesterday's tickets.",
+    "should_trigger": false
+  },
+  {
+    "query": "We need IQ/OQ/PQ qualification docs and a full V-model delivery checklist for a regulated change.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rename variable foo to bar in one file only.",
+    "should_trigger": false
+  }
+]

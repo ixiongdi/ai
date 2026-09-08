@@ -1,0 +1,56 @@
+{
+  "skill_name": "v-model",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We need a 'share link' feature for reports: any logged-in user can create a read-only URL that expires in 7 days. Please implement it end-to-end in this repo.",
+      "expected_output": "Agent follows V-model: ConOps or operating context, REQ IDs and acceptance criteria, left-side requirements validation, paired test designs before deep coding, bidirectional RTM, phase status. Implementation after pre-implementation gate.",
+      "assertions": [
+        "Output includes a V-model progress checklist (or equivalent phase checklist)",
+        "ConOps document or explicit operating-context / intended-use section exists before or with requirements",
+        "At least one requirement ID (e.g. REQ-001) with acceptance criteria appears before deep implementation",
+        "Paired test files exist as separate docs with case detail (steps + expected), not one merged tests.md and not ID-only stubs for normal scale",
+        "An RTM or explicit requirement→test mapping is present or updated",
+        "Requirements or design output includes context beyond a single empty table (e.g. goals, NFRs, or scenarios)",
+        "System design or requirements mentions UI/navigation, data dictionary/entity view, or an explicit N/A for non-UI/data changes",
+        "Testing approach is not described as script-only-only (pairing minimum and/or exploratory/risk-based mention)",
+        "A phase status update mentions scale and next step"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Split the billing service from the monolith: new billing module with HTTP API, keep the old UI calling it. Don't skip integration coverage.",
+      "expected_output": "Agent produces architecture/module boundaries and interface contracts, designs integration tests for the UI↔billing contract, updates RTM, and does not collapse integration into unit-only testing.",
+      "assertions": [
+        "Architecture or module boundaries name UI and billing (or equivalent) as separate units",
+        "At least one interface contract between UI and billing API is described",
+        "Integration test stubs or cases exist that specifically cover the cross-module contract",
+        "Plan does not replace integration tests with unit-only coverage",
+        "RTM or requirement/design mapping links the split to integration tests"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just start coding the password-reset email flow now; we can write tests later if we have time before launch.",
+      "expected_output": "Agent pushes back on deferring all tests: proposes drafting paired test designs (at least unit + UAT stubs) before deep implementation, or records an explicit user waiver in the checklist if the user insists.",
+      "assertions": [
+        "Agent does not silently accept deferring all tests with no process note",
+        "Agent proposes drafting paired test designs before deep coding, OR records an explicit waiver",
+        "If proceeding under user insistence, checklist or status includes a written waiver entry",
+        "If not waived, at least unit and UAT stubs are proposed before deep implementation"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "This is a regulated change for a validated environment. Use GAMP-style qualification: we need IQ, OQ, and PQ in addition to normal layered software tests for the audit-export feature.",
+      "expected_output": "Agent sets scale=regulated, produces software V pairs plus separate iq.md/oq.md/pq.md (or equivalent), maps them in RTM, and orders IQ→OQ→PQ relative to system/UAT.",
+      "assertions": [
+        "Scale is treated as regulated or equivalent",
+        "IQ, OQ, and PQ are addressed as distinct qualification artifacts or clearly named separate docs",
+        "Qualification is mapped alongside or onto unit/integration/system/UAT rather than replacing them entirely",
+        "Order IQ before OQ before PQ is stated or followed",
+        "RTM or traceability mentions qualification IDs or columns"
+      ]
+    }
+  ]
+}

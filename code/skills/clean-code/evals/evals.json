@@ -1,0 +1,41 @@
+{
+  "skill_name": "clean-code",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "按代码整洁之道和 V-model 九个阶段，从上到下从左到右评审整个仓库，最后给我修复 plan，不要往仓库里写评审文档。",
+      "expected_output": "Agent walks stages 1–9 in order, applies Clean Code (1st ed.) including Ch17-style heuristics on coding/unit/module levels, cites paths, orders todos by successive refinement, and ends with CreatePlan without writing review docs into the repo.",
+      "assertions": [
+        "Output or plan includes all nine stages in order (Requirements through Coding)",
+        "Plan or findings cite at least one concrete file path from the target repo",
+        "Clean Code concerns appear (names, functions, errors, tests, or smells)—not only process gaps",
+        "At least one finding or todo references a Ch17-style heuristic id or clear smell name (e.g. G5, N1, G30, duplication, long function)",
+        "Todos are ordered with correctness/safety before pure rename/format polish, or an explicit refinement ordering is stated",
+        "Agent does not create docs/v-model/ or a review report file in the target repo",
+        "A CreatePlan or clearly structured remediation plan with actionable todos is produced"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This service has almost no tests and a 800-line God handler. Do a clean-code V-model review and plan refactors—don't add markdown docs to the tree.",
+      "expected_output": "Findings cover missing unit/integration/system/UAT as appropriate, architecture/module issues, and coding smells on the god handler (e.g. G30), with todos favoring extract/test/rename over documentation, Boy Scout style.",
+      "assertions": [
+        "Stage 5 or 7 mentions module/architecture boundary problems or god object/handler",
+        "Stage 8 and/or 6 call out missing or weak tests",
+        "Stage 9 includes at least one concrete coding smell with a path",
+        "A heuristic id or smell label appears (G30/long function, G5/duplication, T1, etc.)",
+        "Todos prefer code/test changes over 'write a design doc'",
+        "No new review documentation files are written into the target project"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just explain what Uncle Bob meant by 'functions should do one thing'—don't review our repo.",
+      "expected_output": "Agent treats this as Q&A / does not run the full nine-stage review→CreatePlan workflow (skill should not force a whole-repo review).",
+      "assertions": [
+        "Agent does not produce a full nine-stage CreatePlan for the repository",
+        "Response stays at conceptual explanation or briefly declines full review without scouting the whole tree"
+      ]
+    }
+  ]
+}

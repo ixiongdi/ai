@@ -1,0 +1,50 @@
+[
+  {
+    "query": "按 V-model 九阶段从上到下从左到右做整仓 code review，用代码整洁之道的标准，最后给我 plan。",
+    "should_trigger": true
+  },
+  {
+    "query": "Clean Code review of this repo please—naming, functions, tests—and a remediation plan.",
+    "should_trigger": true
+  },
+  {
+    "query": "整洁代码评审一下，别写文档，直接出修复计划。",
+    "should_trigger": true
+  },
+  {
+    "query": "Walk requirements→UAT, design→system test, architecture→integration, module→unit, then coding smells; CreatePlan when done.",
+    "should_trigger": true
+  },
+  {
+    "query": "Our handlers are huge and tests are a mess—need a whole-project clean-code pass.",
+    "should_trigger": true
+  },
+  {
+    "query": "代码整洁之道里的坏味道帮我扫一遍关键路径，按 V 模型阶段出 plan。",
+    "should_trigger": true
+  },
+  {
+    "query": "Follow the V-model to implement a new feature with RTM and paired test docs in docs/v-model.",
+    "should_trigger": false
+  },
+  {
+    "query": "What did Robert C. Martin write historically about agile—just a book summary, no repo review.",
+    "should_trigger": false
+  },
+  {
+    "query": "Fix the typo in README line 3.",
+    "should_trigger": false
+  },
+  {
+    "query": "Run Bugbot / security review only on this PR.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a jest unit test for this pure function—no process, just the test.",
+    "should_trigger": false
+  },
+  {
+    "query": "Convert this JSON to YAML beside it.",
+    "should_trigger": false
+  }
+]
