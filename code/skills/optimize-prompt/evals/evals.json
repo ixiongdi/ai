@@ -1,0 +1,46 @@
+{
+  "skill_name": "optimize-prompt",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我改一下这个提问，太糊了：帮我优化一下代码",
+      "expected_output": "Agent classifies as plan/debug for Cursor, rewrites with goal + which files + what not to touch + how to verify, Chinese copy-paste prompt, short why-list. Does not invent a repo path.",
+      "assertions": [
+        "Delivers one copy-paste prompt in Chinese",
+        "Names files or uses placeholders like [文件路径], does not fabricate a specific repo",
+        "Lists what changed and why",
+        "Does not dump multiple prompt frameworks (CRISPE/CO-STAR/etc.) as equals"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Improve this for ChatGPT: why is my python script slow",
+      "expected_output": "Agent treats as debug: expected vs actual, repro, environment placeholders; one English prompt; no fake stack traces.",
+      "assertions": [
+        "Rewritten prompt asks for expected vs actual and a minimal repro",
+        "Output is English",
+        "Does not invent profiler output or file paths the user never gave"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "优化提示词，给 Cursor：把登录做好点，别改别的",
+      "expected_output": "Cursor-specific: in-scope login vs out-of-scope; verify step; Chinese; optional shorter or stricter variant at most one.",
+      "assertions": [
+        "Prompt states in-scope (login) and do-not-touch other areas",
+        "Includes a verification or done-looks-like cue",
+        "At most one optional variant besides the main prompt"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "你是资深专家请非常全面详细地帮我写一篇关于敏捷的文章要专业有洞察",
+      "expected_output": "Agent strips fake-role/prestige padding, asks for audience, length, and format; does not keep 'world-class expert' boilerplate.",
+      "assertions": [
+        "Optimized prompt does not rely on 'you are a senior expert' style padding",
+        "Adds audience and/or length/format constraints (or placeholders)",
+        "Keeps the user's topic (agile) rather than changing the task"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "query": "优化提示词：帮我优化一下代码",
+    "should_trigger": true
+  },
+  {
+    "query": "改写一下我要发给 ChatGPT 的提问，现在太糊了。",
+    "should_trigger": true
+  },
+  {
+    "query": "Make this prompt better for Claude: explain my error.",
+    "should_trigger": true
+  },
+  {
+    "query": "prompt 太糊了，帮我整理成能直接复制的。",
+    "should_trigger": true
+  },
+  {
+    "query": "Rewrite this question so Cursor knows which files to touch.",
+    "should_trigger": true
+  },
+  {
+    "query": "润色这封给老板的邮件，语气正式一点。",
+    "should_trigger": false
+  },
+  {
+    "query": "Optimize this slow SQL query and add an index.",
+    "should_trigger": false
+  },
+  {
+    "query": "Edit the description field in SKILL.md so the skill triggers more often.",
+    "should_trigger": false
+  },
+  {
+    "query": "Fix the typo in README line 12.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a system prompt for a customer-support bot.",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ixiongdi",
+  "version": "1.0.0",
+  "description": "Skills (V-model, Clean Code, optimize-prompt, ID algorithms) plus id-generator MCP.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/ixiongdi/ai",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "ixiongdi-ai",
+  "owner": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "metadata": {
+    "description": "Agent Plugins marketplace: ixiongdi workflows, and a separate Zvec plugin (skill + MCP launcher)."
+  },
+  "plugins": [
+    {
+      "name": "ixiongdi",
+      "source": "./code",
+      "description": "Skills (V-model, Clean Code, optimize-prompt, ID algorithms) plus id-generator MCP.",
+      "version": "1.0.0",
+      "homepage": "https://github.com/ixiongdi/ai",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "zvec",
+      "source": "./plugins/zvec",
+      "description": "Zvec vector database: skill plus official MCP via uvx. Upstream sources are not vendored.",
+      "version": "1.0.0",
+      "homepage": "https://zvec.org/",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    }
+  ]
+}

@@ -11,20 +11,28 @@ Format: [Agent Skills](https://agentskills.io/home)
 
 ## Install
 
-Copy or symlink this directory so the folder name remains `v-model` and
-contains `SKILL.md`:
+Install the **ixiongdi** [Agent Plugin](https://agent-plugins.org/) (this skill + the others, and MCP):
+[code/README.md](../../README.md).
 
-| Client | Typical path |
-| ------ | ------------ |
-| Cursor (personal) | `~/.cursor/skills/v-model/` |
-| Cursor (project) | `.cursor/skills/v-model/` |
-| VS Code / Copilot | `.agents/skills/v-model/` |
+Do not also symlink this skill into `~/.cursor/skills/` if the plugin is installed.
+Do not write `~/.cursor/skills-cursor/`. Optional project copies:
+`.cursor/skills/v-model/`, `.claude/skills/v-model/`,
+`.codex/skills/v-model/`.
 
-Example:
+### For agent
 
-```bash
-ln -s /path/to/v-model ~/.cursor/skills/v-model
 ```
+Do not clone https://github.com/ixiongdi/ai.git into the user's project.
+Install Agent Plugin ixiongdi (Agent Skills + MCP only) from that repo's code/:
+  Cursor / Codex / other Agent Plugins 1.0 hosts: install the plugin (Cursor local: symlink code/ to ~/.cursor/plugins/local/ixiongdi)
+  Claude Code and other non-Agent-Plugins hosts: skill symlink fallback, do not /plugin install
+```
+
+### For human
+
+See [code/README.md](../../README.md). Skill-only symlink fallback:
+`curl -fsSL https://raw.githubusercontent.com/ixiongdi/ai/main/code/install.sh | bash -s -- --skill v-model --skip-mcp`
+
 
 ## Layout
 

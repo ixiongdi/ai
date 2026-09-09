@@ -1,0 +1,54 @@
+[
+  {
+    "query": "Pick a unique ID algorithm for primary keys and generate a few samples.",
+    "should_trigger": true
+  },
+  {
+    "query": "Use TimeBasedEntropyId or UUIDv7 for the order table PK.",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我选 Snowflake / ULID / NanoID，不要用数据库自增。",
+    "should_trigger": true
+  },
+  {
+    "query": "We need sortable UUID v7 keys in our Go service.",
+    "should_trigger": true
+  },
+  {
+    "query": "Generate JavaScript-safe integer IDs for the JSON API.",
+    "should_trigger": true
+  },
+  {
+    "query": "订单表主键用随机 UUID 把 B-tree 打散了，多实例又不想上 Redis，怎么改？",
+    "should_trigger": true
+  },
+  {
+    "query": "The frontend JSON-parses this field as a Number; IDs must not lose precision.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the typo in README line 12.",
+    "should_trigger": false
+  },
+  {
+    "query": "Update the SUM formulas in ~/Documents/budget.xlsx columns C and D.",
+    "should_trigger": false
+  },
+  {
+    "query": "Validate that this string is a well-formed UUID: 550e8400-e29b-41d4-a716-446655440000",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain the history of RFC 4122 without generating any identifiers.",
+    "should_trigger": false
+  },
+  {
+    "query": "Migrate the orders table from Postgres SERIAL to IDENTITY and rewrite the INSERT statements.",
+    "should_trigger": false
+  },
+  {
+    "query": "Tune MongoDB connection-pool size and maxIdleTimeMS for the billing service.",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "query": "订单服务要全局唯一 64 位 ID，先别上 Redis，给几个样例。",
+    "should_trigger": true
+  },
+  {
+    "query": "Which ID algorithm for a distributed cluster with a shared Redis counter?",
+    "should_trigger": true
+  },
+  {
+    "query": "主键不要 UUIDv4，改成可排序的 UUID，任意语言都行。",
+    "should_trigger": true
+  },
+  {
+    "query": "JS 前端会 JSON.parse 这个 ID，帮我选安全整数方案。",
+    "should_trigger": true
+  },
+  {
+    "query": "Clustered index on the users table is fragmenting; we need time-ordered keys, no extra coordination service.",
+    "should_trigger": true
+  },
+  {
+    "query": "Rename variable foo to bar in one file only.",
+    "should_trigger": false
+  },
+  {
+    "query": "Check whether customer_id in the CSV is a valid RFC UUID format; don't mint new ones.",
+    "should_trigger": false
+  },
+  {
+    "query": "Walk through UUID version bits in the RFC for a blog post; no application IDs.",
+    "should_trigger": false
+  },
+  {
+    "query": "Change MySQL AUTO_INCREMENT start value and dump the schema.",
+    "should_trigger": false
+  },
+  {
+    "query": "Raise the MongoClient maxPoolSize and add retryWrites for the inventory replica set.",
+    "should_trigger": false
+  }
+]

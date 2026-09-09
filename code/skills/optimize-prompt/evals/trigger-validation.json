@@ -1,0 +1,30 @@
+[
+  {
+    "query": "帮我把这段口语变成给 ChatGPT 的提示词。",
+    "should_trigger": true
+  },
+  {
+    "query": "Improve my prompt: generate 3 title options for the blog post.",
+    "should_trigger": true
+  },
+  {
+    "query": "这个提问发给 Cursor 会乱改仓库，帮我收紧约束。",
+    "should_trigger": true
+  },
+  {
+    "query": "Polish this cover letter so it sounds more professional.",
+    "should_trigger": false
+  },
+  {
+    "query": "Tune the Postgres query plan for orders_by_day.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite the agent skill description in optimize-prompt/SKILL.md frontmatter.",
+    "should_trigger": false
+  },
+  {
+    "query": "Draft a system prompt / 角色设定 for an internal HR assistant.",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "zvec",
+  "version": "1.0.0",
+  "description": "Zvec vector database: official MCP via uvx, plus skill for SDK and collection work. Upstream sources are not vendored.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://zvec.org/",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": ["zvec", "mcp", "vector-database", "rag"]
+}

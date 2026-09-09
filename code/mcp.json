@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "id-generator": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["./scripts/run-id-generator-mcp.mjs"],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}

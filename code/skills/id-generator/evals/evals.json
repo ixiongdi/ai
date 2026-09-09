@@ -1,0 +1,75 @@
+{
+  "skill_name": "id-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "订单表要一个 64 位整数主键，多实例但不想上 Redis。帮我选 ID 算法并生成几个样例。",
+      "expected_output": "Agent picks uncoordinated entropy_id, runs python scripts/idgen.py generate entropy_id (and/or recommend), does not invent IDs by hand, notes same-second IDs are not strictly monotonic.",
+      "assertions": [
+        "Recommends entropy_id / TimeBasedEntropyId, not mist_id as the default",
+        "Executes scripts/idgen.py (recommend and/or generate) rather than fabricating IDs",
+        "Does not require Java Maven or IdUtil as the only integration path",
+        "Does not default to uuid_v4 as the integer PK"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We need a time-sortable string primary key for Postgres. Generate 5 examples.",
+      "expected_output": "Agent selects uuid_v7, runs scripts/idgen.py generate uuid_v7 -n 5, explains index locality vs uuid_v4.",
+      "assertions": [
+        "Chooses uuid_v7",
+        "Runs the Python generate script with count 5 (or equivalent --json)",
+        "Mentions uuid_v4 as a worse default for clustered indexes or equivalent"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Cluster must share one monotonic 64-bit allocator (we have Redis). Which algorithm?",
+      "expected_output": "Agent names mist_id, explains production needs a shared increment, may run generate with a local-only warning.",
+      "assertions": [
+        "Names mist_id",
+        "States a shared counter/Redis/DB increment is required in production",
+        "Does not present the Python local counter as a cluster-safe allocator without warning"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "The ID will be parsed with JavaScript Number in the browser. Don't break integers.",
+      "expected_output": "Agent recommends js_safety_id or stringifying 64-bit IDs; may run generate js_safety_id.",
+      "assertions": [
+        "Recommends js_safety_id and/or serializing IDs as strings",
+        "Warns that 64-bit entropy/snowflake is unsafe in JS Number"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Just generate 5 UUIDv7 values; Go project, don't add Java.",
+      "expected_output": "Agent runs scripts/idgen.py generate uuid_v7 -n 5 and does not clone the Java GitHub repo or add Maven.",
+      "assertions": [
+        "Executes the skill Python generate script",
+        "Does not clone https://github.com/ixiongdi/id-generator as the primary approach",
+        "Does not add Java/Maven dependencies"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Need a deterministic UUID from the order SKU 'orders:42' (name-based, SHA-1). Generate one; TypeScript app.",
+      "expected_output": "Agent runs scripts/idgen.py generate uuid_v5 --name orders:42 (not uuid_v3), does not hand-compute MD5/SHA-1, does not omit --name.",
+      "assertions": [
+        "Uses uuid_v5 (or documents uuid_v3 as discouraged MD5)",
+        "Passes --name (or equivalent) to scripts/idgen.py generate",
+        "Does not invent the UUID in chat without running the script"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "We want atomic_id as the cluster sequence. Generate five samples in Python.",
+      "expected_output": "Agent explains atomic_id has no local Python generator, production needs a shared counter, and does not print fake IDs as if generate succeeded.",
+      "assertions": [
+        "States atomic_id is not implemented in scripts/idgen.py generate",
+        "Says production needs a shared counter (Redis/DB), not a process-local increment",
+        "Does not present fabricated atomic_id values as script output"
+      ]
+    }
+  ]
+}
