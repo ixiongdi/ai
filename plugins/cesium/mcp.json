@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "cesium": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "cesium-mcp-runtime"],
+      "env": {
+        "CESIUM_WS_PORT": "9100",
+        "DEFAULT_SESSION_ID": "default"
+      }
+    }
+  }
+}

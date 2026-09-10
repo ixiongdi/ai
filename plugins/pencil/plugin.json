@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pencil",
+  "version": "1.0.0",
+  "description": "pen.dev (the product formerly called Pencil) agent tooling. Named pencil because that is the MCP server name clients display. Skills only: pen.dev writes its own MCP client config, so this documents the connection, the server-side skills, and the .pen workflow.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://www.pen.dev/",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": ["pencil", "pen-dev", "mcp", "design", "pen-files", "design-as-code"]
+}

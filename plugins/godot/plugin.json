@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "godot",
+  "version": "1.0.0",
+  "description": "Godot 4 agent tooling. Godot Foundation ships no official MCP server and no official agent skills, so this plugin is skills-only: it maps the community options published through Godot's official Asset Library and Asset Store, with client configs and trade-offs.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://godotengine.org/",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": ["godot", "godot-engine", "mcp", "gamedev", "gdscript", "agent-skills"]
+}

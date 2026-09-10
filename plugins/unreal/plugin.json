@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "unreal",
+  "version": "1.0.0",
+  "description": "Unreal Engine 5.8 official MCP (the ModelContextProtocol plugin) as an HTTP MCP server, plus a skill for toolset discovery and routing to Epic's first-party Claude Code skills. Upstream sources are not vendored.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://www.unrealengine.com/",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": ["unreal-engine", "ue5", "mcp", "gamedev", "agent-skills"]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "blender",
+  "version": "1.0.0",
+  "description": "Blender's official MCP server from Blender Lab, launched through uv, plus a skill covering the add-on, the tool set, and scene analysis workflows. Upstream is not vendored.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://www.blender.org/lab/mcp-server/",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": ["blender", "mcp", "3d", "bpy", "gamedev"]
+}

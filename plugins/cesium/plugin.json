@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cesium",
+  "version": "1.0.0",
+  "description": "CesiumJS 3D globe control for AI agents: community MCP runtime (npx cesium-mcp-runtime) plus a skill covering the browser half, toolsets, session routing, and Cesium's own official MCP/skills repo. Upstream is not vendored.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://cesium.com/platform/cesiumjs/",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": ["cesium", "cesiumjs", "mcp", "geospatial", "3d-tiles", "globe", "gis"]
+}

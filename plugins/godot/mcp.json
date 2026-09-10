@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "godot": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "gopeak"],
+      "env": {
+        "GOPEAK_TOOL_PROFILE": "compact"
+      }
+    }
+  }
+}
