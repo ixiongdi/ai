@@ -20,7 +20,7 @@
 | 上游 | 官方 MCP | 官方 Skill | 本 plugin 的处理 |
 | ---- | -------- | ---------- | ---------------- |
 | Zvec | 有（`zvec-mcp-server`，PyPI） | 有 | `mcp.json` 走 `uvx` |
-| Unity | 有，但 **2.18 起被官方标记废弃**，转向 Unity CLI | 有（`unity-agent-plugin`、`Unity-Technologies/skills`） | `mcp.json` 走 relay 启动器；Skill 里写明废弃与替代 |
+| Unity | 有，但 **2.18 起官方标记废弃**，转向 Unity CLI（CLI 自身也带 `unity mcp` + `unity skill install`） | 有（`unity-agent-plugin`、`Unity-Technologies/skills`，另有 `unity skill install`） | `mcp.json` 走 **CLI 路径**（`unity mcp`）；废弃的 relay 启动器保留为 fallback |
 | Unreal | 有（引擎内置 `ModelContextProtocol`，UE 5.8 Experimental） | 有（`EpicGames/unreal-engine-skills-for-claude-code-plugin`） | 直连 `127.0.0.1:8000/mcp` |
 | Godot | **没有** | **没有** | `mcp.json` 接社区最优实现（GoPeak），Skill 里写清它为何胜出、setup gates、以及零插件备选 |
 | Blender | 有（Blender Lab，需 5.1+ 与 add-on + uv） | 无 SKILL.md，改为连接时下发 `prompts.yml` + 内置 RST 文档检索 | `mcp.json` 走 uv 启动器 |

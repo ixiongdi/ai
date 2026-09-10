@@ -18,7 +18,7 @@
 |--------|------|------|
 | `ixiongdi` | [code/](code/) | 本仓工作流 Skills + id-generator MCP |
 | `zvec` | [plugins/zvec/](plugins/zvec/) | 官方 Zvec Skill 用法 + MCP（`uvx zvec-mcp-server`） |
-| `unity` | [plugins/unity/](plugins/unity/) | Unity MCP relay 启动器 + 官方 Skill 路由 |
+| `unity` | [plugins/unity/](plugins/unity/) | Unity CLI 为主（`unity mcp`）+ 官方 Skill 路由；relay 保留为 fallback |
 | `unreal` | [plugins/unreal/](plugins/unreal/) | UE 5.8 官方 MCP（HTTP）+ Epic 官方 Skill 路由 |
 | `godot` | [plugins/godot/](plugins/godot/) | 社区 MCP（GoPeak `gopeak`）+ Skill；Godot 无官方实现 |
 | `blender` | [plugins/blender/](plugins/blender/) | Blender Lab 官方 MCP（`uv run blender-mcp`）+ Skill |
