@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mattpocock",
+  "version": "1.2.3",
+  "description": "Skills for Real Engineers: grilling, spec/ticket flows, TDD, code review, domain modeling, and more.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/mattpocock/skills",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "mattpocock",
+    "skills",
+    "tdd",
+    "code-review",
+    "grilling",
+    "domain-modeling",
+    "engineering"
+  ]
+}

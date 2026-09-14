@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ui-ux-pro-max",
+  "version": "2.13.0",
+  "description": "AI-powered design intelligence with 79 UI styles, 192 color palettes, 74 font pairings, 119 UX guidelines, and 25 chart types across 22 tech stacks.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "ui",
+    "ux",
+    "design",
+    "design-system",
+    "color-palette",
+    "typography",
+    "tailwind",
+    "shadcn"
+  ]
+}

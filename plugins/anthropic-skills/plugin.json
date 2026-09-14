@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "anthropic-skills",
+  "version": "1.0.0",
+  "description": "Anthropic official agent skills collection: document processing (PDF, DOCX, XLSX, PPTX), frontend design, MCP builder, webapp testing, and more.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/anthropics/skills",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "anthropic",
+    "skills",
+    "document-processing",
+    "docx",
+    "pdf",
+    "xlsx",
+    "pptx",
+    "mcp-builder",
+    "webapp-testing",
+    "frontend-design"
+  ]
+}

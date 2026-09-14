@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "karpathy-skills",
+  "version": "1.0.0",
+  "description": "Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/forrestchang/andrej-karpathy-skills",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "karpathy",
+    "guidelines",
+    "best-practices",
+    "coding",
+    "simplicity",
+    "surgical-changes"
+  ]
+}

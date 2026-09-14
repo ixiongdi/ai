@@ -1,19 +1,31 @@
 # Marketplace plugins
 
-本仓是市场 **ixiongdi-ai**，八个独立 [Agent Plugin](https://agent-plugins.org/)。
+本仓是市场 **ixiongdi-ai**，遵循 [Agent Plugins 1.0](https://agent-plugins.org/) 与 [Agent Skills](https://agentskills.io/) 标准，包含 20 个独立 Plugin。
 
-| 目录 | plugin `name` | 内容 |
+| 目录 | plugin `name` | 说明 |
 | ---- | ------------- | ---- |
-| [../code/](../code/) | `ixiongdi` | 本仓工作流 Skills + id-generator MCP |
-| [zvec/](zvec/) | `zvec` | Zvec Skill + `uvx zvec-mcp-server`；不拷贝上游仓 |
-| [unity/](unity/) | `unity` | Unity MCP relay 启动器 + 官方 Skill 路由 |
+| [../code/](../code/) | `ixiongdi` | 本仓工作流 Skills (V-model, Clean Code, optimize-prompt, ID) + id-generator MCP |
+| [zvec/](zvec/) | `zvec` | Zvec 向量数据库 Skill + `uvx zvec-mcp-server` MCP |
+| [unity/](unity/) | `unity` | Unity CLI 为主（`unity mcp`）+ 官方 Skill 路由；relay 启动器保留为 fallback |
 | [unreal/](unreal/) | `unreal` | UE 5.8 官方 MCP（HTTP）+ Epic 官方 Skill 路由 |
 | [godot/](godot/) | `godot` | 社区 MCP（GoPeak `npx -y gopeak`）+ Skill；Godot 无官方实现 |
 | [blender/](blender/) | `blender` | Blender Lab 官方 MCP（`uv run blender-mcp`）+ Skill |
 | [pencil/](pencil/) | `pencil` | 仅 Skills：pen.dev 自行写入 MCP 配置，收录连接与工作流 |
 | [cesium/](cesium/) | `cesium` | 社区 MCP（`npx -y cesium-mcp-runtime`）+ Skill；官方方案写进 Skill |
+| [ponytail/](ponytail/) | `ponytail` | 极简主义 Lazy Senior Dev 模式与代码减重 Skills |
+| [superpowers/](superpowers/) | `superpowers` | 软件工程实践框架：TDD、系统化根因调试、架构与执行计划、子智能体协作 |
+| [mattpocock/](mattpocock/) | `mattpocock` | 真实工程实践技能：Grilling 压力测试、规格转工单、TDD、代码审查、领域建模 |
+| [karpathy-skills/](karpathy-skills/) | `karpathy-skills` | Andrej Karpathy 总结的大模型编程陷阱与认知偏见防范行为准则 |
+| [anthropic-skills/](anthropic-skills/) | `anthropic-skills` | Anthropic 官方实用技能集：PDF/Word/Excel/PPT 生成编辑、前端设计、MCP 构建器、Web 测试 |
+| [ui-ux-pro-max/](ui-ux-pro-max/) | `ui-ux-pro-max` | 专业级 UI/UX 设计智能：79 种设计风格、192 套配色、74 组字体、22 种技术栈 |
+| [graphify/](graphify/) | `graphify` | 代码库与文档知识图谱化：确定性 AST 解析、GraphRAG、社区发现与关系检索 |
+| [browser-use/](browser-use/) | `browser-use` | 智能体浏览器自动化控制、端到端 Web QA、无头浏览器与云端环境访问 |
+| [ecc/](ecc/) | `ecc` | Everything Claude Code：智能体性能优化、架构评估、闭环测试等 290+ 技能 |
+| [gstack/](gstack/) | `gstack` | Garry Tan 完整团队角色体系：CEO 商业审查、架构评审、设计审查、QA 与自动化 Ship |
+| [awesome-design-md/](awesome-design-md/) | `awesome-design-md` | 74 款知名品牌设计系统规范 (DESIGN.md 标准)：Linear、Vercel、Stripe、Claude、Apple 等 |
+| [agency-agents/](agency-agents/) | `agency-agents` | 完整 AI 专家团队架构：18 个部门（工程、设计、产品、安全、测试等）、270+ 个深度定制的专家 Persona |
 
-统一原则：**不把上游源码拷进本仓**。MCP 一律通过官方发行渠道拉取或直连运行中的宿主，Skill 用 URL 指向上游。
+统一原则：**不把上游源码拷进本仓**。MCP 一律通过官方发行渠道拉取或直连运行中的宿主，Skill 用 URL 指向上游。各插件保持独立解耦与便携标准化，按需加载，不混装冗余私有宿主钩子。
 
 ## 上游与官方状态
 

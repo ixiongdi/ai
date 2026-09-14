@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "awesome-design-md",
+  "version": "1.0.0",
+  "description": "74+ curated DESIGN.md brand design systems (Google Stitch standard): Linear, Vercel, Stripe, Claude, Apple, OpenAI, Cursor, and more.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/VoltAgent/awesome-design-md",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "design-md",
+    "design-system",
+    "ui",
+    "ux",
+    "google-stitch",
+    "linear",
+    "vercel",
+    "stripe",
+    "claude"
+  ]
+}

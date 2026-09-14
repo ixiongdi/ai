@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ponytail",
+  "version": "4.9.0",
+  "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/dietrichgebert/ponytail",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": ["ponytail", "skills", "yagni", "minimal-code", "clean-code", "code-review"]
+}

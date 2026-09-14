@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ecc",
+  "version": "2.2.1",
+  "description": "Everything Claude Code (ECC): Agent harness performance optimization system. Skills, instincts, memory, security, and research-first engineering.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/affaan-m/ECC",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "ecc",
+    "everything-claude-code",
+    "agent-harness",
+    "skills",
+    "optimization",
+    "engineering"
+  ]
+}

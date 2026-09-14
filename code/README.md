@@ -10,7 +10,7 @@
 | [Agent Skills](https://agentskills.io/home) | `skills/*/SKILL.md` |
 | [MCP](https://modelcontextprotocol.io) | `mcp/id-generator`（stdio；由 `mcp.json` 启动） |
 
-不提供 Claude / Cursor / OpenAI 的私有组件（hooks、agents、commands、rules、LSP、`.mcp.json` 等）。仓库根的 marketplace 是**两个 plugin**：本项 `ixiongdi`，以及独立的 `zvec`（Skill + `uvx` MCP，不拷贝上游源码）。
+不提供 Claude / Cursor / OpenAI 的私有组件（hooks、agents、commands、rules、LSP、`.mcp.json` 等）。仓库根的 marketplace 是**独立 plugins**：本项 `ixiongdi`，以及独立的 `zvec`（Skill + `uvx` MCP，不拷贝上游源码）、`ponytail`（极简 Senior Dev 模式 Skills）。
 
 不要把本仓 clone 进用户当前项目。
 
@@ -25,7 +25,7 @@ The package follows only Agent Plugins 1.0 + Agent Skills + MCP. No Claude/Curso
 
 Clients that load Agent Plugins 1.0:
   Cursor: Customize → install from git repo ixiongdi/ai, or symlink code/ to ~/.cursor/plugins/local/ixiongdi and reload. Do not write ~/.cursor/skills-cursor/.
-  Codex / ChatGPT desktop: codex plugin marketplace add ixiongdi/ai then install plugin ixiongdi from marketplace ixiongdi-ai. Optional separate plugin zvec (Zvec skill + uvx MCP; not vendored upstream source).
+  Codex / ChatGPT desktop: codex plugin marketplace add ixiongdi/ai then install plugin ixiongdi from marketplace ixiongdi-ai. Optional separate plugins: zvec (Zvec skill + uvx MCP), ponytail (lazy senior dev mode skills).
 
 Clients that do not load Agent Plugins (including Claude Code):
   Use the skill symlink fallback (curl installer). Do not /plugin install.
@@ -43,7 +43,7 @@ Do not also symlink the same skills into ~/.cursor/skills if the plugin is insta
 codex plugin marketplace add ixiongdi/ai
 ```
 
-然后在 Plugins Directory 打开市场 **ixiongdi-ai**，按需安装 **ixiongdi**。Zvec 另装 **zvec**（Skill + MCP 已合成一个 plugin），不要和本 plugin 混成一个。
+然后在 Plugins Directory 打开市场 **ixiongdi-ai**，按需安装 **ixiongdi**。其它独立插件另装 **zvec** 或 **ponytail**，不要和本 plugin 混成一个。
 
 Cursor 也可 Customize 安装 git 仓库 `ixiongdi/ai`，或本仓开发：
 

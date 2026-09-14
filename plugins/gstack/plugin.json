@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gstack",
+  "version": "1.84.1",
+  "description": "Garry Tan's Claude Code setup: opinionated tools serving as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/garrytan/gstack",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "gstack",
+    "garrytan",
+    "ceo-review",
+    "eng-review",
+    "design-review",
+    "ship",
+    "qa",
+    "workflow"
+  ]
+}

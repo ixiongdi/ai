@@ -5,7 +5,7 @@
     "url": "https://github.com/ixiongdi"
   },
   "metadata": {
-    "description": "Agent Plugins marketplace: ixiongdi workflows, Zvec, engine tooling for Unity/Unreal/Godot/Blender, and design and geospatial tooling for pen.dev and Cesium."
+    "description": "Agent Plugins marketplace: ixiongdi workflows, Zvec, game & 3D engines (Unity, Unreal, Godot, Blender), design/geo (pen.dev, Cesium, awesome-design-md, ui-ux-pro-max), and engineering superpowers (superpowers, mattpocock, karpathy, anthropics, ecc, gstack, graphify, browser-use, agency-agents, ponytail)."
   },
   "plugins": [
     {
@@ -77,6 +77,114 @@
       "description": "CesiumJS 3D globe control via the community MCP runtime, plus a skill covering the required browser half and Cesium's own official MCP and skills repo.",
       "version": "1.0.0",
       "homepage": "https://cesium.com/platform/cesiumjs/",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "ponytail",
+      "source": "./plugins/ponytail",
+      "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+      "version": "4.9.0",
+      "homepage": "https://github.com/dietrichgebert/ponytail",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "superpowers",
+      "source": "./plugins/superpowers",
+      "description": "An agentic skills framework & software development methodology: TDD, systematic debugging, planning, and subagents.",
+      "version": "6.3.0",
+      "homepage": "https://github.com/obra/superpowers",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "mattpocock",
+      "source": "./plugins/mattpocock",
+      "description": "Skills for Real Engineers: grilling, spec/ticket flows, TDD, code review, domain modeling, and more.",
+      "version": "1.2.3",
+      "homepage": "https://github.com/mattpocock/skills",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "karpathy-skills",
+      "source": "./plugins/karpathy-skills",
+      "description": "Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy observations.",
+      "version": "1.0.0",
+      "homepage": "https://github.com/forrestchang/andrej-karpathy-skills",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "anthropic-skills",
+      "source": "./plugins/anthropic-skills",
+      "description": "Anthropic official agent skills: document processing (PDF, DOCX, XLSX, PPTX), frontend design, MCP builder, and webapp testing.",
+      "version": "1.0.0",
+      "homepage": "https://github.com/anthropics/skills",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "source": "./plugins/ui-ux-pro-max",
+      "description": "AI-powered UI/UX design intelligence with 79 styles, 192 color palettes, 74 font pairings, and 22 tech stacks.",
+      "version": "2.13.0",
+      "homepage": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "graphify",
+      "source": "./plugins/graphify",
+      "description": "Turn any codebase, with docs and schemas, into a queryable knowledge graph. AST parsing, GraphRAG, and community detection.",
+      "version": "1.0.0",
+      "homepage": "https://github.com/Graphify-Labs/graphify",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "browser-use",
+      "source": "./plugins/browser-use",
+      "description": "Make websites accessible for AI agents. Open-source browser automation, remote cloud browser, and web QA.",
+      "version": "1.0.0",
+      "homepage": "https://browser-use.com",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "ecc",
+      "source": "./plugins/ecc",
+      "description": "Everything Claude Code (ECC): Agent harness performance optimization, 290+ skills, memory, and research-first engineering.",
+      "version": "2.2.1",
+      "homepage": "https://github.com/affaan-m/ECC",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "gstack",
+      "source": "./plugins/gstack",
+      "description": "Garry Tan Claude Code setup: 50+ opinionated skills serving as CEO, Designer, Eng Manager, QA, and Ship.",
+      "version": "1.84.1",
+      "homepage": "https://github.com/garrytan/gstack",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "awesome-design-md",
+      "source": "./plugins/awesome-design-md",
+      "description": "74+ curated DESIGN.md brand design systems (Google Stitch standard): Linear, Vercel, Stripe, Claude, Apple, OpenAI, and more.",
+      "version": "1.0.0",
+      "homepage": "https://github.com/VoltAgent/awesome-design-md",
+      "repository": "https://github.com/ixiongdi/ai",
+      "license": "MIT"
+    },
+    {
+      "name": "agency-agents",
+      "source": "./plugins/agency-agents",
+      "description": "A complete AI agency with 270+ specialized expert agents across 18 divisions (Engineering, Design, Product, QA, Security, Marketing, etc.).",
+      "version": "1.0.0",
+      "homepage": "https://github.com/msitarzewski/agency-agents",
       "repository": "https://github.com/ixiongdi/ai",
       "license": "MIT"
     }

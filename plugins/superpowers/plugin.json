@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "superpowers",
+  "version": "6.3.0",
+  "description": "An agentic skills framework & software development methodology: TDD, systematic debugging, subagent-driven development, and plan execution.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/obra/superpowers",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "superpowers",
+    "skills",
+    "tdd",
+    "debugging",
+    "planning",
+    "subagents",
+    "software-engineering"
+  ]
+}

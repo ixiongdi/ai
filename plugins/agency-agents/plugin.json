@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agency-agents",
+  "version": "1.0.0",
+  "description": "A complete AI agency with 270+ specialized expert agents across 18 divisions (Engineering, Design, Product, QA, Security, Marketing, etc.).",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/msitarzewski/agency-agents",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "agency-agents",
+    "ai-agency",
+    "agents",
+    "specialists",
+    "engineering",
+    "design",
+    "product",
+    "roles"
+  ]
+}

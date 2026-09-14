@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "graphify",
+  "version": "1.0.0",
+  "description": "Turn any codebase, with its docs, schemas, and configs, into a queryable knowledge graph. Local AST parsing, GraphRAG, and community detection.",
+  "author": {
+    "name": "ixiongdi",
+    "url": "https://github.com/ixiongdi"
+  },
+  "homepage": "https://github.com/Graphify-Labs/graphify",
+  "repository": "https://github.com/ixiongdi/ai",
+  "license": "MIT",
+  "keywords": [
+    "graphify",
+    "knowledge-graph",
+    "graphrag",
+    "ast",
+    "codebase-analysis",
+    "obsidian"
+  ]
+}
