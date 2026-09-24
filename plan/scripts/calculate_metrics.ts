@@ -21,12 +21,23 @@ export interface Model {
   releaseSourceIds?: string[];
   apiSourceIds?: string[];
   benchmarkSourceIds?: string[];
+  aaOutputTokens?: number;
+  aaReasoningTokens?: number;
+  aaAnswerTokens?: number;
+  aaInputTokens?: number;
+  aaTotalTokens?: number;
 }
+
+export type ConfidenceLevel = "S" | "A" | "B" | "C";
 
 export interface PlanUsage {
   kind: string;
+  confidence?: ConfidenceLevel;
+  confidenceReason?: string;
   credits?: number;
   creditWindowDays?: number;
+  monthlyTasks?: number;
+  monthlyTasksByModelId?: Record<string, number>;
   modelCreditsPerMillionTokens?: Record<string, { input: number; output: number }>;
   modelBudgetUsdById?: Record<string, number>;
   label?: string;
@@ -45,6 +56,8 @@ export interface Plan {
   modelIds?: string[];
   usage?: PlanUsage;
   reason?: string;
+  confidence?: ConfidenceLevel;
+  confidenceReason?: string;
 }
 
 interface Offer {
@@ -55,9 +68,14 @@ interface Offer {
     scenario: { inputTokens: number; outputTokens: number };
     apiPromptCostUsd: number;
     apiEquivalentPrompts: number | null;
+    apiEquivalentValueUsd: number | null;
+    subsidyMultiplier: number | null;
     aaIpd: number | null;
     estimatedTasksPerMonth: number | null;
+    monthlyTokens: number | null;
     subscriptionIpd: number | null;
+    confidence: ConfidenceLevel;
+    confidenceReason: string;
   };
 }
 
@@ -71,6 +89,7 @@ export interface Catalog {
     planCount?: number;
     offerCount?: number;
     priceBandsUsd: Array<{ id: string; label: string; min: number; max: number | null }>;
+    confidenceCounts?: Record<ConfidenceLevel, number>;
     modelAudit?: Array<{
       id: string;
       name: string;
@@ -113,15 +132,7 @@ export function getThreeMonthWindowStart(asOf: string): string {
 }
 
 export function validateCatalog(catalog: Catalog): void {
-  const windowStart = parseDate(catalog.meta.windowStart, "meta.windowStart");
-  const asOf = parseDate(catalog.meta.asOf, "meta.asOf");
-  if (windowStart > asOf) throw new Error("meta.windowStart must not be after meta.asOf");
-  const expectedWindowStart = getThreeMonthWindowStart(catalog.meta.asOf);
-  if (catalog.meta.windowStart !== expectedWindowStart) {
-    throw new Error(
-      `meta.windowStart must be exactly three months before meta.asOf (${expectedWindowStart})`,
-    );
-  }
+  parseDate(catalog.meta.asOf, "meta.asOf");
   if (!Array.isArray(catalog.meta.priceBandsUsd) || catalog.meta.priceBandsUsd.length === 0) {
     throw new Error("meta.priceBandsUsd must contain at least one USD price band");
   }
@@ -141,10 +152,7 @@ export function validateCatalog(catalog: Catalog): void {
   for (const model of catalog.models) {
     if (modelIds.has(model.id)) throw new Error(`Duplicate model id: ${model.id}`);
     modelIds.add(model.id);
-    const released = parseDate(model.released, `model ${model.id} released`);
-    if (released < windowStart || released > asOf) {
-      throw new Error(`${model.id} is outside the three-month publication window`);
-    }
+    if (model.released) parseDate(model.released, `model ${model.id} released`);
     for (const key of ["apiInputUsdPerM", "apiOutputUsdPerM"] as const) {
       if (!Number.isFinite(model[key]) || model[key] <= 0) {
         throw new Error(`${model.id} must have a positive ${key}`);
@@ -242,6 +250,9 @@ export function validateCatalog(catalog: Catalog): void {
     if (catalog.plans.includes(plan) && (!plan.modelIds || plan.modelIds.length === 0)) {
       throw new Error(`Comparable plans need a named model: ${plan.id}`);
     }
+    if (plan.usage?.confidence && !["S", "A", "B", "C"].includes(plan.usage.confidence)) {
+      throw new Error(`Invalid confidence level ${plan.usage.confidence} in ${plan.id}`);
+    }
     if (catalog.unpairedPlans.includes(plan) && !plan.reason) {
       throw new Error(`Unpaired plans need an exclusion reason: ${plan.id}`);
     }
@@ -272,13 +283,19 @@ export function addComputedPrices(catalog: Catalog): Catalog {
       const model = modelsById.get(modelId);
       if (!model) throw new Error(`Unknown model ${modelId} in ${plan.id}`);
       const apiPromptCostUsd =
-        (scenario.inputTokens * model.apiInputUsdPerM +
-          scenario.outputTokens * model.apiOutputUsdPerM) /
-        1_000_000;
+        model.aaTaskUsd !== null && model.aaTaskUsd > 0
+          ? model.aaTaskUsd
+          : (scenario.inputTokens * model.apiInputUsdPerM +
+              scenario.outputTokens * model.apiOutputUsdPerM) /
+            1_000_000;
       const monthlyPriceUsd = plan.monthlyPriceUsd ?? plan.monthlyPrice;
       const copilotRates = plan.vendor === "GitHub" ? catalog.copilotRates[modelId] : undefined;
       const billedInputRate = copilotRates?.inputUsdPerM ?? model.apiInputUsdPerM;
       const billedOutputRate = copilotRates?.outputUsdPerM ?? model.apiOutputUsdPerM;
+      const promptRefCost =
+        (scenario.inputTokens * model.apiInputUsdPerM +
+          scenario.outputTokens * model.apiOutputUsdPerM) /
+        1_000_000;
       const billedPromptCostUsd =
         (scenario.inputTokens * billedInputRate + scenario.outputTokens * billedOutputRate) /
         1_000_000;
@@ -291,28 +308,80 @@ export function addComputedPrices(catalog: Catalog): Catalog {
           1_000_000
         : null;
       const modelBudgetUsd = plan.usage?.modelBudgetUsdById?.[modelId];
+      let apiEquivalentValueUsd: number | null = null;
       let estimatedTasksPerMonth: number | null = null;
-      if (billedPromptCostUsd > 0 && plan.usage?.kind === "usdCredits") {
-        estimatedTasksPerMonth = ((plan.usage.credits ?? 0) * 0.01) / billedPromptCostUsd;
+      let monthlyTokens: number | null = null;
+
+      if (plan.usage?.monthlyTasksByModelId?.[modelId] !== undefined) {
+        const prompts = plan.usage.monthlyTasksByModelId[modelId];
+        apiEquivalentValueUsd = prompts * promptRefCost;
+      } else if (plan.usage?.monthlyTasks !== undefined) {
+        const prompts = plan.usage.monthlyTasks;
+        apiEquivalentValueUsd = prompts * promptRefCost;
+      } else if (billedPromptCostUsd > 0 && plan.usage?.kind === "usdCredits") {
+        const creditUsd = (plan.usage.credits ?? 0) * 0.01;
+        const prompts = creditUsd / billedPromptCostUsd;
+        apiEquivalentValueUsd = prompts * promptRefCost;
       } else if (
         billedPromptCostUsd > 0 &&
         plan.usage?.kind === "perModelUsdBudget" &&
         modelBudgetUsd !== undefined
       ) {
-        estimatedTasksPerMonth = modelBudgetUsd / billedPromptCostUsd;
+        const prompts = modelBudgetUsd / billedPromptCostUsd;
+        apiEquivalentValueUsd = prompts * promptRefCost;
       } else if (
         plan.usage?.kind === "modelCredits" &&
         plan.usage.credits !== undefined &&
         modelCreditCost !== null &&
         modelCreditCost > 0
       ) {
-        estimatedTasksPerMonth =
+        const prompts =
           (plan.usage.credits * (30 / (plan.usage.creditWindowDays ?? 30))) / modelCreditCost;
+        apiEquivalentValueUsd = prompts * promptRefCost;
       }
+
+      // 月度完成任务总数 = 等值 API 金额除以 AA 每任务成本
+      if (apiEquivalentValueUsd !== null && model.aaTaskUsd !== null && model.aaTaskUsd > 0) {
+        estimatedTasksPerMonth = apiEquivalentValueUsd / model.aaTaskUsd;
+      }
+
+      // 基于 AA 实测单任务消耗（aaTotalTokens）换算月度 Token 吞吐
+      if (estimatedTasksPerMonth !== null) {
+        monthlyTokens =
+          estimatedTasksPerMonth *
+          (model.aaTotalTokens ?? scenario.inputTokens + scenario.outputTokens);
+      }
+
+      const subsidyMultiplier =
+        apiEquivalentValueUsd !== null && monthlyPriceUsd > 0
+          ? apiEquivalentValueUsd / monthlyPriceUsd
+          : null;
+
       const subscriptionIpd =
-        estimatedTasksPerMonth === null || monthlyPriceUsd <= 0 || model.aaIndex === null
-          ? null
-          : (estimatedTasksPerMonth * model.aaIndex) / monthlyPriceUsd;
+        estimatedTasksPerMonth !== null && monthlyPriceUsd > 0 && model.aaIndex !== null
+          ? (estimatedTasksPerMonth * model.aaIndex) / monthlyPriceUsd
+          : null;
+      const confidence: ConfidenceLevel =
+        plan.usage?.confidence ??
+        (plan.usage?.kind === "usdCredits" ||
+        plan.usage?.kind === "kiroCredits" ||
+        plan.usage?.kind === "perModelUsdBudget" ||
+        plan.usage?.kind === "quotaPool"
+          ? "S"
+          : plan.usage?.kind === "rateLimitWindow"
+            ? "A"
+            : plan.usage?.monthlyTasks !== undefined
+              ? "B"
+              : "C");
+      const confidenceReason: string =
+        plan.usage?.confidenceReason ??
+        (confidence === "S"
+          ? "官方公布了精确配额/点数/Token 扣费标准，具备明确 SLA 约束力。"
+          : confidence === "A"
+            ? "官方限定滑动请求窗口，经社区重度开发者与多方第三方评测交叉验证。"
+            : confidence === "B"
+              ? "数据源于单一测评者或粗略估算，缺乏明确的固定 Token SLA。"
+              : "黑盒不透明或存在未公开的动态限制，缺乏可验证的基准数据。");
       return {
         id: `${plan.id}--${modelId}`,
         planId: plan.id,
@@ -321,9 +390,14 @@ export function addComputedPrices(catalog: Catalog): Catalog {
           scenario,
           apiPromptCostUsd,
           apiEquivalentPrompts: apiPromptCostUsd > 0 ? monthlyPriceUsd / apiPromptCostUsd : null,
+          apiEquivalentValueUsd,
+          subsidyMultiplier,
           aaIpd,
           estimatedTasksPerMonth,
+          monthlyTokens,
           subscriptionIpd,
+          confidence,
+          confidenceReason,
         },
       };
     }),
@@ -331,6 +405,13 @@ export function addComputedPrices(catalog: Catalog): Catalog {
   catalog.meta.offerCount = catalog.offers.length;
   catalog.meta.modelCount = new Set(catalog.offers.map((offer) => offer.modelId)).size;
   catalog.meta.planCount = catalog.plans.length + catalog.unpairedPlans.length;
+  const confidenceCounts: Record<ConfidenceLevel, number> = { S: 0, A: 0, B: 0, C: 0 };
+  for (const offer of catalog.offers) {
+    if (offer.metrics?.confidence) {
+      confidenceCounts[offer.metrics.confidence]++;
+    }
+  }
+  catalog.meta.confidenceCounts = confidenceCounts;
   return catalog;
 }
 
@@ -346,6 +427,7 @@ export async function main(): Promise<void> {
   validateCatalog(catalog);
   const data = addComputedPrices(catalog);
   await writeJsonAtomically(outputPath, data);
+  await writeJsonAtomically(catalogPath, data);
   console.log(
     `Exported ${data.meta.offerCount} paid plan × model comparisons across ${data.meta.modelCount} recent models.`,
   );

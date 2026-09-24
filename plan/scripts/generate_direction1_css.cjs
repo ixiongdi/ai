@@ -1,4 +1,6 @@
-/* ==========================================================================
+const fs = require("fs");
+
+const cssContent = `/* ==========================================================================
    DIRECTION 1: LINEAR / VERCEL / RAYCAST / SHADCN-VUE 极简暗黑科技美学
    Zero-VDOM Pure CSS Design System for Vue 3 Vapor Mode
    ========================================================================== */
@@ -52,11 +54,8 @@
   --rose-border: rgba(244, 63, 94, 0.35);
 
   /* Typography Stacks */
-  --font-mono:
-    "DM Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-sans:
-    "DM Sans", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "DM Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: "DM Sans", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* Shadows & Radius */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -117,7 +116,7 @@ html {
 body {
   margin: 0;
   background-color: var(--bg-page);
-  background-image:
+  background-image: 
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.12), transparent),
     radial-gradient(ellipse 60% 40% at 90% 20%, rgba(16, 185, 129, 0.04), transparent);
   background-attachment: fixed;
@@ -131,14 +130,12 @@ body {
 }
 
 html.light body {
-  background-image:
+  background-image: 
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.06), transparent),
     radial-gradient(ellipse 60% 40% at 90% 20%, rgba(16, 185, 129, 0.03), transparent);
 }
 
-button,
-input,
-select {
+button, input, select {
   font: inherit;
   color: inherit;
   outline: 0;
@@ -215,15 +212,9 @@ html.light .topbar {
   border-radius: 2px 2px 0 0;
 }
 
-.brand-mark i:nth-child(1) {
-  height: 8px;
-}
-.brand-mark i:nth-child(2) {
-  height: 13px;
-}
-.brand-mark i:nth-child(3) {
-  height: 18px;
-}
+.brand-mark i:nth-child(1) { height: 8px; }
+.brand-mark i:nth-child(2) { height: 13px; }
+.brand-mark i:nth-child(3) { height: 18px; }
 
 .brand-name {
   font: 700 13px var(--font-mono);
@@ -273,15 +264,8 @@ html.light .data-stamp {
 }
 
 @keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 .theme-toggle {
@@ -405,9 +389,7 @@ html.light .hero h1 {
   width: 320px;
   background: var(--card);
   border: 1px solid var(--card-border);
-  box-shadow:
-    var(--shadow-sm),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   padding: 20px 22px;
   font-size: 13px;
@@ -454,9 +436,7 @@ html.light .hero h1 {
 .stat-card {
   background: var(--card);
   border: 1px solid var(--card-border);
-  box-shadow:
-    var(--shadow-sm),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   padding: 20px 24px;
   display: flex;
@@ -583,9 +563,7 @@ html.light .sector-tabs {
   background: var(--card);
   color: var(--ink);
   font-weight: 600;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 html.light .sector-tab.is-active {
@@ -600,82 +578,13 @@ html.light .sector-tab.is-active {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Unified Filter Grid (7-Column Precision Toolbar) */
+/* Unified Filter Grid (Harmonious 5-Column Toolbar) */
 .filter-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1.15fr 1.15fr 0.9fr 0.9fr 1.25fr;
-  gap: 10px;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr 1.3fr;
+  gap: 12px;
   align-items: flex-end;
-  margin-bottom: 14px;
-}
-
-.active-filters-bar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: -4px;
-  margin-bottom: 18px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed var(--card-border);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-}
-
-html.light .active-filters-bar {
-  background: rgba(0, 0, 0, 0.02);
-}
-
-.active-filters-label {
-  color: var(--muted);
-  font-weight: 500;
-  font-size: 11px;
-}
-
-.filter-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  color: var(--ink);
-  font-size: 11px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.filter-pill button {
-  background: transparent;
-  border: none;
-  color: var(--muted);
-  cursor: pointer;
-  padding: 0 2px;
-  font-size: 14px;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-}
-
-.filter-pill button:hover {
-  color: #ef4444;
-}
-
-.reset-filters-btn {
-  margin-left: auto;
-  background: transparent;
-  border: none;
-  color: var(--accent);
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 600;
-  text-decoration: underline;
-  padding: 2px 4px;
-}
-
-.reset-filters-btn:hover {
-  color: var(--ink);
+  margin-bottom: 16px;
 }
 
 .field {
@@ -1159,9 +1068,7 @@ html.light .view-toggle {
   background: var(--card);
   color: var(--ink);
   font-weight: 600;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 html.light .view-toggle-btn.is-active {
@@ -1186,9 +1093,7 @@ html.light .view-toggle-btn.is-active {
 .offer-card {
   background: var(--card);
   border: 1px solid var(--card-border);
-  box-shadow:
-    var(--shadow-sm),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   padding: 18px 20px;
   display: flex;
@@ -1202,9 +1107,7 @@ html.light .view-toggle-btn.is-active {
 
 .offer-card:hover {
   border-color: var(--card-border-hover);
-  box-shadow:
-    0 12px 28px -4px rgba(0, 0, 0, 0.7),
-    0 0 16px rgba(99, 102, 241, 0.12);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.7), 0 0 16px rgba(99, 102, 241, 0.12);
   transform: translateY(-2px);
 }
 
@@ -1285,24 +1188,6 @@ html.light .vendor-stamp {
   padding: 1px 6px;
   border-radius: 3px;
   text-transform: uppercase;
-}
-
-.sector-chip.is-ai {
-  color: #c084fc;
-  background: rgba(192, 132, 252, 0.12);
-  border: 1px solid rgba(192, 132, 252, 0.25);
-}
-
-.sector-chip.is-cloud {
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-}
-
-.sector-chip.is-coding {
-  color: #34d399;
-  background: rgba(52, 211, 153, 0.12);
-  border: 1px solid rgba(52, 211, 153, 0.25);
 }
 
 .card-plan-title {
@@ -1674,34 +1559,15 @@ html.light .comparison-table th {
   background: #f1f5f9;
 }
 
-.comparison-table th:nth-child(1) {
-  width: 11%;
-}
-.comparison-table th:nth-child(2) {
-  width: 11%;
-}
-.comparison-table th:nth-child(3) {
-  width: 12%;
-}
-.comparison-table th:nth-child(4) {
-  width: 11%;
-}
-.comparison-table th:nth-child(5) {
-  width: 9%;
-}
-.comparison-table th:nth-child(6) {
-  width: 14%;
-}
-.comparison-table th:nth-child(7) {
-  width: 14%;
-}
-.comparison-table th:nth-child(8) {
-  width: 13%;
-}
-.comparison-table th:nth-child(9) {
-  width: 5%;
-  text-align: center;
-}
+.comparison-table th:nth-child(1) { width: 11%; }
+.comparison-table th:nth-child(2) { width: 11%; }
+.comparison-table th:nth-child(3) { width: 12%; }
+.comparison-table th:nth-child(4) { width: 11%; }
+.comparison-table th:nth-child(5) { width: 9%; }
+.comparison-table th:nth-child(6) { width: 14%; }
+.comparison-table th:nth-child(7) { width: 14%; }
+.comparison-table th:nth-child(8) { width: 13%; }
+.comparison-table th:nth-child(9) { width: 5%; text-align: center; }
 
 .comparison-table td {
   padding: 12px 14px;
@@ -2248,12 +2114,6 @@ html.light .comparison-table tbody tr:hover td {
 }
 
 /* Responsive Media Queries */
-@media (max-width: 1200px) {
-  .filter-grid {
-    grid-template-columns: 1.5fr repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 1080px) {
   .page-shell {
     padding: 0 20px;
@@ -2324,3 +2184,7 @@ html.light .comparison-table tbody tr:hover td {
     min-width: 1100px;
   }
 }
+`;
+
+fs.writeFileSync("web/styles.css", cssContent);
+console.log("Successfully written web/styles.css (" + cssContent.length + " bytes)");

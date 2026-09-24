@@ -2,3 +2,6 @@
 *.log
 node_modules/
 dist/
+*.bak
+screenshot_*.png
+scripts/aa_raw_chunks.txt
